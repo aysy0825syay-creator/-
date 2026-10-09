@@ -43,4 +43,4 @@ async def nuke(ctx):
             print(f"エラーが発生しました: {e}")
 
 # ボットのトークンを入れてください
-bot.run("MTU1ODAxMDYwMjczNDIzMTU1Mw.GM-TqS.MwUPIEMOgyi6B4l37o1Jnt10j32VhFf-ofZ9P8")
+bot.run("MTU1ODAxMDYwMjczNDIzMTU1Mw.G5vDPs.d3Ylo7okeRDYX3PNpS2R000AwaWGXf_PRjIpMc")
